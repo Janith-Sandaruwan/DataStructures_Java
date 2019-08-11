@@ -62,7 +62,7 @@ public class ArrayList {
 			int len = ar.length;
 			int i=0;
 			//if full creating a new array to add new elements
-			Object[] ar2 = new Object[len + ar.length>>1];
+			Object[] ar2 = new Object[len + (ar.length>>1)];
 			//copying all the element of the initial array to new array
 			while (i<len) {
 				ar2[i]=ar[i];
@@ -93,7 +93,7 @@ public class ArrayList {
 		   int len = ar.length;
 		   int i=0;
 		   //if full creating a new array to add new elements
-		   Object[] ar2 = new Object[len + ar.length>>1];
+		   Object[] ar2 = new Object[len + (ar.length>>1)];
 		   //copying all the element of the initial array to new array
 		   while (i<=index) {
 			   if(i==index){
@@ -136,7 +136,7 @@ public class ArrayList {
 		   int len = ar.length;
 		   int i=0;
 		   //if full creating a new array to add new elements
-		   Object[] ar2 = new Object[len + ar.length>>1];
+		   Object[] ar2 = new Object[len + (ar.length>>1)];
 		   //copying all the element of the initial array to new array
 		   while (i<=len) {
 				ar2[i+1]=ar[i];
@@ -225,19 +225,21 @@ public class ArrayList {
 	 */
 
 	public int indexOf(Object element) throws Exception{
+		int index = 0;
 		if(isEmpty()){
 			throw new Exception("Empty Array");
 		}
 		else{
 			for(int i=0;i<ar.length;i++){
 				if(element==ar[i]){
-					return i;
+					index = i;
+					break;
 				}
-				else{
-					throw new Exception("No such element");
-				}
+				
 			}
 		}
+		return index;
+		
 	}
 
 	/*
@@ -247,20 +249,22 @@ public class ArrayList {
 	 * @return : boolean
 	 */
 
-	public int contains(Object element) throws Exception{
+	public boolean contains(Object element) throws Exception{
+		boolean x = false;
 		if(isEmpty()){
 			throw new Exception("Empty Array");
 		}
 		else{
 			for(int i=0;i<ar.length;i++){
 				if(element==ar[i]){
-					return true;
+					x = true;
 				}
 				else{
-					return false;
+					x = false;
 				}
 			}
 		}
+		return x;
 	}
 
 	/*
