@@ -1,3 +1,3 @@
 # DataStructures_Java
 
-Data Structures (CArrayList,LinkedList) implemented in java
+Data Structures (ArrayList,LinkedList) implemented in java
