@@ -98,7 +98,6 @@ public class ArrayList {
 		   while (i<=index) {
 			   if(i==index){
 					//adding new element
-					ar2[i]=element;
 					i++;
 			   }else{
 					ar2[i]=ar[i];
@@ -118,7 +117,7 @@ public class ArrayList {
 		else{
 			int i=count;
 			while(i>index){
-				ar[i+1]=ar[i];
+				ar[i]=ar[i-1];
 				i--;
 			}
 			ar[index]=element;
@@ -161,4 +160,156 @@ public class ArrayList {
 		}
 	}
 
+	/*
+	 * Method Name : replace
+	 * Description : Replaing the given element at the givent point of the unsorted array
+	 * @parameters :  element / int index
+	 */
+
+	public void replace(Object element,int index) throws Exception {
+		//check if the array is full
+		if(index<count){
+		   ar[index]=element;
+		}
+		else{
+			throw new Exception("Index is out of the range");
+		}
+	}
+
+	/*
+	 * Method Name : printAll
+	 * Description : Print all the elements of the array
+	 * @parameters : No parameters required
+	 */
+
+	public void printAll() throws Exception {
+		//check if the array is full
+		if(isEmpty()){
+			throw new Exception("Empty ArrayList : no such elements to print");
+		}
+		else{
+			for(int i=0;i<count;i++){
+				System.out.print(ar[i]+" | ");
+			}
+			System.out.println();
+		}
+	}
+
+	/*
+	 * Method Name : size
+	 * Description : return element count of the array
+	 * @parameters : No parameters required
+	 * @return : int count
+	 */
+
+	public int size() {
+		return count;
+	}
+
+	/*
+	 * Method Name : get
+	 * Description : return element of the given index
+	 * @parameters : int index
+	 * @return : element
+	 */
+
+	public Object get(int index){
+		return ar[index];
+	}
+
+	/*
+	 * Method Name : indexOf
+	 * Description : return index of the given element
+	 * @parameters : Object element
+	 * @return : index
+	 */
+
+	public int indexOf(Object element) throws Exception{
+		if(isEmpty()){
+			throw new Exception("Empty Array");
+		}
+		else{
+			for(int i=0;i<ar.length;i++){
+				if(element==ar[i]){
+					return i;
+				}
+				else{
+					throw new Exception("No such element");
+				}
+			}
+		}
+	}
+
+	/*
+	 * Method Name : contains
+	 * Description : return true if the element is present
+	 * @parameters : Object element
+	 * @return : boolean
+	 */
+
+	public int contains(Object element) throws Exception{
+		if(isEmpty()){
+			throw new Exception("Empty Array");
+		}
+		else{
+			for(int i=0;i<ar.length;i++){
+				if(element==ar[i]){
+					return true;
+				}
+				else{
+					return false;
+				}
+			}
+		}
+	}
+
+	/*
+	 * Method Name : removeIndex
+	 * Description : remove element which belongs to index
+	 * @parameters : int index
+	 */
+
+	public void removeIndex(int index) throws Exception{
+		if(isEmpty()){
+			throw new Exception("Empty Array");
+		}
+		else{
+			if(index<count){
+				for(int i=index;i<ar.length;i++){
+					ar[i]=ar[i+1];
+				}
+			} else throw new Exception("Index is out of the list range");
+		}
+	}
+
+	/*
+	 * Method Name : removeElement
+	 * Description : remove element 
+	 * @parameters : Object element
+	 */
+
+	public void removeElement(Object element) throws Exception{
+		if(isEmpty()){
+			throw new Exception("Empty Array");
+		}
+		else{
+			int index=indexOf(element);
+			removeIndex(index);
+		}
+	}
+
+	/*
+	 * Method Name : clear
+	 * Description : clear the array 
+	 * @parameters : No parameters required
+	 */
+
+	public void clear() throws Exception{
+		if(isEmpty()){
+			throw new Exception("Empty Array");
+		}
+		else{
+			count=0;
+		}
+	}
 }
