@@ -1,5 +1,6 @@
+package com.dataStructures;
 
-public class ArrayList {
+public class ArrayList implements ArrayLists {
 	/*
 	 * Author : Janith Sandaruwan
 	 * Implementation: Dynamic arrays using java array
@@ -8,8 +9,8 @@ public class ArrayList {
 
 	private int default_size = 10;
 	private Object ar[]; //array reference
-	private int count;	//element count
-	
+	private int count=0;	//element count
+
 	/*
 	 * Default constructor 
 	 * Parameters : no parameters required
@@ -36,17 +37,18 @@ public class ArrayList {
 	 * 		  : boelan false - if array is not empty 
 	 */
 
-	 public boolean isEmpty() {
-		 return count == 0;
-	 }
+	@Override
+	public boolean isEmpty() {
+			return count == 0;
+	}
 
-	 /*
+	/*
 	 * Method Name : isFull
 	 * Description : Check whether the arrayList is full or not
 	 * Return : boolean yes - if array is full
 	 * 		  : boelan false - if array is not full 
 	 */
-
+	@Override
 	public boolean isFull() {
 		return count == ar.length;
 	}
@@ -55,7 +57,7 @@ public class ArrayList {
 	 * Method Name : add
 	 * Description : Adding the given element at the end of the unsorted array
 	 */
-
+	@Override
 	 public void add(Object element) {
 		 //check if the array is full
 		 if(isFull()){
@@ -98,6 +100,7 @@ public class ArrayList {
 		   while (i<=index) {
 			   if(i==index){
 					//adding new element
+				    ar2[i]=element;
 					i++;
 			   }else{
 					ar2[i]=ar[i];
@@ -151,8 +154,8 @@ public class ArrayList {
 		//if the array is not full
 		else{
 			int i=count;
-			while(i>=0){
-				ar[i+1]=ar[i];
+			while(i>0){
+				ar[i]=ar[i-1];
 				i--;
 			}
 			ar[0]=element;
@@ -185,7 +188,7 @@ public class ArrayList {
 	public void printAll() throws Exception {
 		//check if the array is full
 		if(isEmpty()){
-			throw new Exception("Empty ArrayList : no such elements to print");
+			throw new Exception("Empty com.dataStructures.ArrayList : no such elements to print");
 		}
 		else{
 			for(int i=0;i<count;i++){
@@ -303,17 +306,22 @@ public class ArrayList {
 	}
 
 	/*
-	 * Method Name : clear
+	 * Method Name : getTotal
 	 * Description : clear the array 
 	 * @parameters : No parameters required
 	 */
 
-	public void clear() throws Exception{
-		if(isEmpty()){
-			throw new Exception("Empty Array");
-		}
-		else{
+	@Override
+	public int getTotal() {
+		return count;
+	}
+	/*
+	 * Method Name : clear
+	 * Description : clear the array
+	 * @parameters : No parameters required
+	 */
+	@Override
+	public void clear(){
 			count=0;
-		}
 	}
 }
